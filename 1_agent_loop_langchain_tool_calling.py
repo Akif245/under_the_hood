@@ -2,7 +2,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-from langchain.chat_models import init_chat_model
+# from langchain.chat_models import init_chat_model
+from langchain_ollama import ChatOllama
 from langchain.tools import tool
 from langchain_core.messages import HumanMessage, SystemMessage, ToolMessage
 from langsmith import traceable
@@ -40,7 +41,13 @@ def run_agent(question: str):
     tools = [get_product_price, apply_discount]
     tools_dict = {t.name: t for t in tools}
 
-    llm = init_chat_model(f"ollama:{MODEL}", temperature=0)
+
+    llm = ChatOllama(
+    model=MODEL,
+    temperature=0,
+)
+
+    # llm = init_chat_model(f"ollama:{MODEL}", temperature=0)
     llm_with_tools = llm.bind_tools(tools)
 
     print(f"Question: {question}")
