@@ -9,6 +9,7 @@ dependencies = [
     "google-genai>=2.16.0",
     "isort>=7.0.0",
     "langchain>=1.2.10",
+    "langchain-google-genai>=4.3.2",
     "langchain-ollama>=1.0.1",
     "langchain-openai>=1.1.9",
     "langsmith>=0.10.14",
